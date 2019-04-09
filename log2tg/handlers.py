@@ -7,6 +7,7 @@ from typing import List
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
+logger.propagate = True
 
 
 @dataclass(eq=False)
@@ -28,13 +29,14 @@ class TelegramHandler(logging.Handler):
 			url: str = 'https://api.telegram.org/bot{}/sendMessage'.format(self.token)
 			for chat_id in self.ids:
 				payload = {
-					'chat_id': chat_id,
-					'text':    self.format(record),
+					'chat_id':                  chat_id,
+					'text':                     self.format(record),
 					'disable_web_page_preview': self.disable_web_page_preview,
 					'disable_notification':     self.disable_notification,
-					'parse_mode': getattr(self.formatter, 'parse_mode', None),
+					'parse_mode':               getattr(self.formatter, 'parse_mode', None),
 				}
 				requests.post(url, data=payload, timeout=self.timeout)
+				logger.debug(f'Send  logging-message to {chat_id} tg chat')
 			requests_handler.propagate = True
 		except:
 			self.handleError(record)
