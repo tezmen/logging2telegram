@@ -63,7 +63,7 @@ For custom formating:
 'formatters': {
     'tg_full': {
         'class': 'log2tg.HtmlFormatter',
-        'format': '%(message)s'
+        'format': '<b>%(level)s</b> %(filename)s: %(message)s <code>%(exc_text)s</code>'
     }
 }
 ```
