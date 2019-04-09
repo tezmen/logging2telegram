@@ -32,7 +32,7 @@ class TelegramHandler(logging.Handler):
 					'text':    self.format(record),
 					'disable_web_page_preview': self.disable_web_page_preview,
 					'disable_notification':     self.disable_notification,
-					'parse_mode': 'HTML',
+					'parse_mode': getattr(self.formatter, 'parse_mode', None),
 				}
 				requests.post(url, data=payload, timeout=self.timeout)
 			requests_handler.propagate = True
