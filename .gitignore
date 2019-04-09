@@ -1,0 +1,15 @@
+# folders
+venv/
+
+# folders everywhere
+__pycache__
+.idea
+
+# files
+.DS_Store
+
+# extensions
+*.pyc
+*.pyd
+*.pyo
+*.zip
