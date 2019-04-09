@@ -19,7 +19,7 @@ def requirements():
 
 setup(
 	name='logging2telegram',
-	version='1.0.1',
+	version='1.0.2',
 	packages=['log2tg'],
 	url='https://github.com/tezmen/loging2telegram',
 	author='tezmen',
