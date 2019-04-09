@@ -26,33 +26,32 @@ import logging.config
 import logging
 
 logging.config.dictConfig({
-	'version':    1,
-	'formatters': {
-		'tg_full': {
-			'class': 'log2tg.HtmlFormatter',
-		}
-	},
-	'handlers':   {
-		'telegram': {
-			'level':     'DEBUG',
-			'class':     'log2tg.TelegramHandler',
-			'formatter': 'tg_full',
+    'version': 1,
+    'formatters': {
+        'tg_full': {
+            'class': 'log2tg.HtmlFormatter',
+        }
+    },
+    'handlers': {
+        'telegram': {
+            'level':     'DEBUG',
+            'class':     'log2tg.TelegramHandler',
+            'formatter': 'tg_full',
+            'disable_web_page_preview': True,
             'token':     'BOT:TOKEN',
             'ids':       [123,132,321],
-		},
-	},
-	'loggers':    {
-		'myapp': {
-			'handlers': ['telegram']
-		}
-	},
+        },
+    },
+    'loggers': {
+        'myapp': {
+            'handlers': ['telegram']
+        }
+    },
 })
-
 
 def show():
 	logger = logging.getLogger('myapp')
 	logger.warning('we have <b>a</b> warning')
-
 
 if __name__ == '__main__':
 	show()
@@ -63,8 +62,8 @@ For custom formating:
 ```python
 'formatters': {
     'tg_full': {
-	    'class': 'log2tg.HtmlFormatter',
-		'format': '%(message)s'
-	}
+        'class': 'log2tg.HtmlFormatter',
+        'format': '%(message)s'
+    }
 }
 ```
