@@ -16,7 +16,7 @@ class HtmlFormatter(logging.Formatter):
 	def format(self, record: logging.LogRecord) -> str:
 		record.funcName: str = html.escape(record.funcName)
 		record.name: str = html.escape(record.name)
-		record.msg: str = html.escape(record.msg)
+		record.msg: str = html.escape(str(record.msg))
 		record.message = record.getMessage()
 		if self.usesTime():
 			record.asctime = self.formatTime(record, self.datefmt)
